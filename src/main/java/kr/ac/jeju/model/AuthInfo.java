@@ -5,11 +5,13 @@ public class AuthInfo {
     private String id;
     private String name;
     private int authority;
+    private boolean loginStatus;
 
-    public AuthInfo(String id, String name, int authority){
+    public AuthInfo(String id, String name, int authority, boolean loginStatus){
         this.id = id;
         this.name = name;
         this.authority = authority;
+        this.loginStatus = loginStatus;
     }
 
     public String getId() {
@@ -34,5 +36,13 @@ public class AuthInfo {
 
     public void setAuthority(int authority) {
         this.authority = authority;
+    }
+
+    public boolean isLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(boolean loginStatus) {
+        this.loginStatus = loginStatus;
     }
 }

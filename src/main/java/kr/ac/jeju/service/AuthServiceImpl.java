@@ -24,6 +24,6 @@ public class AuthServiceImpl implements AuthService{
         if(!user.matchPassword(password)){
             throw new IdPasswordNotMatchingException();
         }
-        return new AuthInfo(user.getId(), user.getName(), user.getAuthority());
+        return new AuthInfo(user.getId(), user.getName(), user.getAuthority(), true);
     }
 }

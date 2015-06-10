@@ -7,9 +7,14 @@
 	<title>shopping-mall</title>
 	</head>
 <body>
-	<div>
-		<button id="registerBtn" onclick="location.href='register/step1'">회원가입</button>
-		<button id="loginBtn" onclick="location.href='login/loginForm'">로그인</button>
-	</div>
+	<c:if test="${null == userId}">
+		<div>
+			<button id="registerBtn" onclick="location.href='register/step1'">회원가입</button>
+	</c:if>
+	<c:if test="${! empty userId}">
+			${userId}
+	</c:if>
+			<button id="loginBtn" onclick="location.href='login/loginForm'">로그인</button>
+		</div>
 </body>
 </html>
