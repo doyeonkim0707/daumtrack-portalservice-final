@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public void register(User user) {
+		//아이디 중복 처리 해야됨
 		userDaoMapper.insert(user);
 	}
 }

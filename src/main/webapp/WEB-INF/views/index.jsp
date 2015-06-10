@@ -9,7 +9,7 @@
 <body>
 	<div>
 		<button id="registerBtn" onclick="location.href='register/step1'">회원가입</button>
-		<button id="loginBtn">로그인</button>
+		<button id="loginBtn" onclick="location.href='login/loginForm'">로그인</button>
 	</div>
 </body>
 </html>

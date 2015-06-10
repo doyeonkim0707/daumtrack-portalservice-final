@@ -31,4 +31,8 @@ public class User {
 		this.authority = authority;
 	}
 
+	public boolean matchPassword(String pwd){
+		return this.password.equals(pwd);
+	}
+
 }

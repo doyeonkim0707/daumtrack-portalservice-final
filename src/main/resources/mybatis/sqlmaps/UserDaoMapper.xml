@@ -16,7 +16,7 @@
 	<select id="findById" resultType="User">
 		select 
 			id, name, password	
-		from userInfo where id = #{id}
+		from userInfo where user_id = #{id}
 	</select>
 
 	<update id="update" parameterType="User"> 

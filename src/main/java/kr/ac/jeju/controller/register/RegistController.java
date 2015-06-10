@@ -1,7 +1,6 @@
 package kr.ac.jeju.controller.register;
 
 import kr.ac.jeju.Exception.AlreadyExistingMemberException;
-import kr.ac.jeju.model.RegisterRequest;
 import kr.ac.jeju.model.User;
 import kr.ac.jeju.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,7 @@ public class RegistController {
 
     @RequestMapping(value = "/step2", method = RequestMethod.POST)
     public String handelStep2(User newUser){
+        //아이디 중복 처리 해야됨
         try {
             userService.register(newUser);
             return "redirect:/";
