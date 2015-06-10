@@ -1,4 +1,4 @@
-package kr.ac.jeju.controller.user;
+package kr.ac.jeju.controller;
 
 
 import kr.ac.jeju.model.User;
