@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface UserDaoMapper {
 
-	List<User> findAll();
-	void insert(User user);
-	User findById(String id);
+	 List<User> findAll();
+	 void insert(User user);
+	 User findById(String id);
 }

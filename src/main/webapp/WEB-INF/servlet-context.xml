@@ -19,6 +19,7 @@
     </beans:bean>
     <beans:import resource="repository.xml" />
     <view-controller path="/**/*.jeju" />
-    <!--<view-controller path="/register/step1" view-name="register/step1"/>-->
+    <!--<view-controller path="/registerProduct/step1" view-name="registerProduct/step1"/>-->
 
+    <!--<view-controller path="/register/step1" view-name="register/step1"/>-->
 </beans:beans>

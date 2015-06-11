@@ -19,12 +19,22 @@
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
+	<!-- Configure the multipart resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="2000000"/>
+	</bean>
+
+	<!-- Configure the file upload directory-->
+	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg>
+			<value>C:/Users/Administrator/Desktop/shopping01/src/main/webapp/resources/image/</value>
+		</constructor-arg>
+	</bean>
+
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/loginForm/**"/>
+			<mvc:mapping path="/registerProduct/**"/>
 			<bean class="kr.ac.jeju.interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
-
 </beans>

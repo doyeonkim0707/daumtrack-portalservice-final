@@ -19,7 +19,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for(int i = 0; i <cookies.length; i++){
-				if(cookies[i].getName().equals("sessionId")){
+				if(cookies[i].getName().equals("userName")){
 					sessionid = cookies[i].getValue();
 					return true;
 				}
