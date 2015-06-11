@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>shopping-mall</title>
+	<title>shopping-mall 메인화면</title>
 	</head>
 <body>
 	<div>
@@ -13,9 +13,17 @@
 			<button id="loginBtn" onclick="location.href='login/loginForm'">로그인</button>
 		</c:if>
 		<c:if test="${! empty userId}">
-			${userId}
-			<button id="addProductBtn" onclick="location.href='/uploadProduct'">상품등록</button>
-			<button id="logoutBtn" onclick="location.href='/logout'">로그아웃</button>
+			<c:choose>
+				<c:when test="${authority eq '1'}">
+					${userId}님 안녕하세요.
+					<button id="addProductBtn" onclick="location.href='/product'">상품등록</button>
+					<button id="logoutBtn" onclick="location.href='/logout'">로그아웃</button>
+				</c:when>
+				<c:when test="${authority eq '2'}">
+					${userId}님 안녕하세요.
+					<button id="logoutBtn" onclick="location.href='/logout'">로그아웃</button>
+				</c:when>
+			</c:choose>
 		</c:if>
 	</div>
 	<div id="Content" >
@@ -33,7 +41,7 @@
 			<c:forEach items="${productList}" var="products">
 				<tr>
 					<td><img src="${products.url}" width="90" height="90"> </td>
-					<td><a href="modify?id=${products.name}">${products.name}</a></td>
+					<td><a href="productInfo?id=${products.id}">${products.name}</a></td>
 					<td>${products.price}</td>
 					<td>${products.distributor}</td>
 				</tr>

@@ -18,7 +18,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 @Controller
-@RequestMapping("/uploadProduct")
+@RequestMapping("/product")
 public class UploadProductController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class UploadProductController {
         model.addAttribute(new ProductItem());
         model.addAttribute("userName", URLDecoder.decode(userCookie.getValue(), "UTF-8"));
 
-        return "/uploadProduct/uploadForm";
+        return "/product/uploadForm";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -42,7 +42,7 @@ public class UploadProductController {
             for(ObjectError error : result.getAllErrors()){
                 System.err.println("Error:" + error.getCode() + "-" + error.getDefaultMessage());
             }
-            return "/uploadProduct/uploadForm";
+            return "/product/uploadForm";
         }
 
         if(!productItem.getFileData().isEmpty()){

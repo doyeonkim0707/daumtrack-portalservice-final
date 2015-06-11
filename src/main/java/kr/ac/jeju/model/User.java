@@ -4,7 +4,7 @@ public class User {
 	private String id;
 	private String password;
 	private String name;
-	private int authority;
+	private String authority;
 
 	public String getId() {
 		return id;
@@ -24,10 +24,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
-	public void setAuthority(int authority) {
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 

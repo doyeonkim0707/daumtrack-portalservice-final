@@ -37,19 +37,24 @@ public class LoginController {
             AuthInfo authInfo = authService.authenticate(loginCommand.getId(), loginCommand.getPassword());
 
             CookieGenerator cookieGer = new CookieGenerator();
+            CookieGenerator cookieGer1 = new CookieGenerator();
 
             cookieGer.setCookieName("userName");
+            cookieGer1.setCookieName("authority");
 
             try {
                 cookieGer.addCookie(response, URLEncoder.encode(authInfo.getName(), "UTF-8"));
+                cookieGer1.addCookie(response, URLEncoder.encode(authInfo.getAuthority(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
             if(authInfo.isLoginStatus()){
                 cookieGer.setCookieMaxAge(60 * 60 * 24 * 30);
+                cookieGer1.setCookieMaxAge(60 * 60 * 24 * 30);
             }else {
                 cookieGer.setCookieMaxAge(0);
+                cookieGer1.setCookieMaxAge(0);
             }
 
             return "redirect:/";
@@ -57,6 +62,5 @@ public class LoginController {
             //errors 넣어야됨.
             return "/login/loginForm";
         }
-
     }
 }

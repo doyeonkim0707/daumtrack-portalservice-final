@@ -18,9 +18,9 @@ public class RegisterUserController {
     UserService userService;
 
     @RequestMapping("/step1")
-    public String handelStep1(Model model, User user){
+    public String handelStep1(Model model){
 
-        /*model.addAttribute("registerRequest",new LoginCommand());*/
+        model.addAttribute("user",new User());
 
         return "registerUser/step1";
     }

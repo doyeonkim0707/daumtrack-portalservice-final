@@ -11,4 +11,5 @@ public interface ProductDaoMapper {
 
     void insert(ProductItem productItem);
     List<ProductItem> findAll();
+    ProductItem findById(int id);
 }

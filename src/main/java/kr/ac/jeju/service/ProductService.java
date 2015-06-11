@@ -10,4 +10,5 @@ public interface ProductService {
 
     List<ProductItem> list();
     void uploadProduct(ProductItem productItem, BindingResult result);
+    ProductItem printProductInfo(int id);
 }

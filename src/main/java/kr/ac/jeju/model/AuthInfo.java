@@ -4,10 +4,10 @@ public class AuthInfo {
 
     private String id;
     private String name;
-    private int authority;
+    private String authority;
     private boolean loginStatus;
 
-    public AuthInfo(String id, String name, int authority, boolean loginStatus){
+    public AuthInfo(String id, String name, String authority, boolean loginStatus){
         this.id = id;
         this.name = name;
         this.authority = authority;
@@ -30,11 +30,11 @@ public class AuthInfo {
         this.name = name;
     }
 
-    public int getAuthority() {
+    public String getAuthority() {
         return authority;
     }
 
-    public void setAuthority(int authority) {
+    public void setAuthority(String authority) {
         this.authority = authority;
     }
 

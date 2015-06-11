@@ -7,6 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
  */
 public class ProductItem {
 
+    private int id;
     private CommonsMultipartFile fileData;
     private String url;
     private String name;
@@ -64,5 +65,13 @@ public class ProductItem {
 
     public void setDistributor(String distributor) {
         this.distributor = distributor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

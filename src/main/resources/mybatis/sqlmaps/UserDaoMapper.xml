@@ -4,7 +4,7 @@
 <mapper namespace="kr.ac.jeju.repository.UserDaoMapper">
 	<select id="findAll" resultType="User" >
 		select 
-			id, name
+			id, name, authority
 		from userInfo
 	</select>
 	<insert id="insert" parameterType="User">
@@ -15,7 +15,7 @@
 	</delete>
 	<select id="findById" resultType="User">
 		select 
-			id, name, password	
+			id, name, password, authority
 		from userInfo where user_id = #{id}
 	</select>
 

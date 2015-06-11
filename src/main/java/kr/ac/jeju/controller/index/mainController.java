@@ -23,15 +23,20 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(ModelMap model,
-                        @CookieValue(value = "userName", required = false) Cookie userCookie) throws UnsupportedEncodingException {
+                        @CookieValue(value = "userName", required = false) Cookie userCookie,
+                        @CookieValue(value = "authority",required = false) Cookie authority)
+            throws UnsupportedEncodingException {
 
         String cookieName = null;
-        if(userCookie != null){
+        String cookieAuth = null;
+        if(userCookie != null && authority != null){
             cookieName = URLDecoder.decode(userCookie.getValue(), "UTF-8");
+            cookieAuth = URLDecoder.decode(authority.getValue(),  "UTF-8");
         }
 
         List<ProductItem> list = productService.list();
 
+        model.addAttribute("authority",cookieAuth);
         model.addAttribute("userId", cookieName );
         model.addAttribute("productList", list);
         return "index";

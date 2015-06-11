@@ -60,4 +60,9 @@ public class ProductServiceImpl implements ProductService {
         System.err.println("Test upload: " + productItem.getFileData().getOriginalFilename());
         System.err.println("-------------------------------------------");
     }
+
+    @Override
+    public ProductItem printProductInfo(int id) {
+        return productDaoMapper.findById(id);
+    }
 }
