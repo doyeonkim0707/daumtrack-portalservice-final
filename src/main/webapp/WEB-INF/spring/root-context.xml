@@ -27,13 +27,13 @@
 	<!-- Configure the file upload directory-->
 	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
 		<constructor-arg>
-			<value>C:/Users/Administrator/Desktop/shopping01/src/main/webapp/resources/image/</value>
+			<value>C:\upload\</value>
 		</constructor-arg>
 	</bean>
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/registerProduct/**"/>
+			<mvc:mapping path="/shoppingBasket"/>
 			<bean class="kr.ac.jeju.interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

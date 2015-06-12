@@ -2,6 +2,7 @@ package kr.ac.jeju.service;
 
 
 import kr.ac.jeju.model.ProductItem;
+import kr.ac.jeju.model.UserBasket;
 import kr.ac.jeju.repository.ProductDaoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -28,6 +29,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductItem> userBasketList(UserBasket userBasket) {
+        return productDaoMapper.findUserProductList(userBasket);
+    }
+
+    @Override
     public void uploadProduct(ProductItem productItem, BindingResult result) {
 
         String filename = productItem.getFileData().getOriginalFilename();
@@ -38,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
             byte[] bytes = productItem.getFileData().getBytes();
             try{
                 String path = fsResource.getPath()+"_"+filename;
-                String url = "http://117.17.102.36:8083/resources/image/_"+ filename;
+                String url = "http://117.17.102.36:8080/images/_"+ filename;
                 File lOutFile = new File(path);
                 FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
                 lFileOutputStream.write(bytes);
@@ -64,5 +70,40 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductItem printProductInfo(int id) {
         return productDaoMapper.findById(id);
+    }
+
+    @Override
+    public void updateProduct(ProductItem productItem, BindingResult result) {
+
+        String filename = productItem.getFileData().getOriginalFilename();
+        String imgExt = filename.substring(filename.lastIndexOf(".")+1, filename.length());
+
+        //upload 가능한 파일 타입 지정
+        if(imgExt.equalsIgnoreCase("JPG") || imgExt.equalsIgnoreCase("JPEG") || imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")){
+            byte[] bytes = productItem.getFileData().getBytes();
+            try{
+                String path = fsResource.getPath()+"_"+filename;
+                String url = "http://117.17.102.36:8080/images/_"+ filename;
+                File lOutFile = new File(path);
+                FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
+                lFileOutputStream.write(bytes);
+                lFileOutputStream.close();
+                productItem.setUrl(url);
+                productDaoMapper.update(productItem);
+            }catch(IOException ie){
+                //Exception 처리
+                System.err.println("File writing error! ");
+            }
+            System.err.println("File upload success! ");
+        }else{
+            System.err.println("File type error! ");
+        }
+
+        // Some type of file processing...
+        System.err.println("-------------------------------------------");
+        System.err.println("Test upload: " + productItem.getName());
+        System.err.println("Test upload: " + productItem.getFileData().getOriginalFilename());
+        System.err.println("-------------------------------------------");
+
     }
 }

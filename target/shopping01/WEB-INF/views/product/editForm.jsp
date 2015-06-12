@@ -8,7 +8,7 @@
 <body>
 <form:form modelAttribute="productItem" method="post" enctype="multipart/form-data">
   <fieldset>
-    <legend>${userName}</legend>
+    <legend>${userId}</legend>
     <p>
       <form:label for="fileData" path="fileData">상품 이미지</form:label>
       <form:input path="fileData" type="file"/>

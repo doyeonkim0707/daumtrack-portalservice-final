@@ -2,9 +2,6 @@ package kr.ac.jeju.model;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-/**
- * Created by Administrator on 2015-06-11.
- */
 public class ProductItem {
 
     private int id;

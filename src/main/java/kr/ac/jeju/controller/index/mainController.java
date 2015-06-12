@@ -36,6 +36,7 @@ public class MainController {
 
         List<ProductItem> list = productService.list();
 
+
         model.addAttribute("authority",cookieAuth);
         model.addAttribute("userId", cookieName );
         model.addAttribute("productList", list);

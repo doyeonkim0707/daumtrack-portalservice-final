@@ -17,7 +17,7 @@
     </P>
     <P>
       <label>Password
-        <form:password path="password"/>
+        <form:password path="password"/>z
       </label>
     </P>
     <P>

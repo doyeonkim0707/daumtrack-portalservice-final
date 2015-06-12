@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jeju.repository.UserBasketDaoMapper">
+	<!--<select id="findAll" resultType="ProductItem" >
+		select * from products ORDER BY products.time DESC
+	</select>-->
+	<insert id="insert" parameterType="UserBasket">
+		insert into user_basket(user_name,product_id) values(#{userName}, #{productId})
+	</insert>
+	<select id="findById" resultType="ProductItem">
+		select
+		*
+		from products where id = #{id}
+	</select>
+	<!--<update id="update" parameterType="ProductItem">
+		update products set url=#{url}, name=#{name}, price=#{price}, distributor=#{distributor}, description=#{description} where id = #{id}
+	</update>-->
+	<delete id="delete">
+		delete from user_basket where id = #{id}
+	</delete>
+</mapper>

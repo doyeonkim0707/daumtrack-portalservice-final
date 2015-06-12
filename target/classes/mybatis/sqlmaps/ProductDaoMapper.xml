@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.ac.jeju.repository.ProductDaoMapper">
 	<select id="findAll" resultType="ProductItem" >
-		select * from products
+		select * from products ORDER BY products.time DESC
 	</select>
 	<insert id="insert" parameterType="ProductItem">
 		insert into products(url, name, price, distributor, description) values(#{url}, #{name}, #{price}, #{distributor}, #{description})
@@ -13,12 +13,14 @@
 		*
 		from products where id = #{id}
 	</select>
+	<select id="findUserProductList" resultType="ProductItem">
+		SELECT * FROM user_basket INNER JOIN products ON user_basket.product_id = products.id WHERE user_basket.user_name = #{userName}
+	</select>
+	<update id="update" parameterType="ProductItem">
+		update products set url=#{url}, name=#{name}, price=#{price}, distributor=#{distributor}, description=#{description} where id = #{id}
+	</update>
 
 	<!--<delete id="delete">
 		delete from userInfo where id = #{id}
-	</delete>
-
-	<update id="update" parameterType="ProductItem">
-		update userInfo set name=#{name}, password=#{password} where id = #{id}
-	</update>-->
+	</delete>-->
 </mapper>

@@ -11,4 +11,5 @@ public interface UserDaoMapper {
 	 List<User> findAll();
 	 void insert(User user);
 	 User findById(String id);
+
 }
